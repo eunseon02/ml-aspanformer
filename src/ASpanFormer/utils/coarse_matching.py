@@ -194,7 +194,8 @@ class CoarseMatching(nn.Module):
         mask = mask \
             * (conf_matrix == conf_matrix.max(dim=2, keepdim=True)[0]) \
             * (conf_matrix == conf_matrix.max(dim=1, keepdim=True)[0])
-
+        mask = mask.float()
+        
         # 3. find all valid coarse matches
         # this only works when at most one `True` in each row
         mask_v, all_j_ids = mask.max(dim=2)

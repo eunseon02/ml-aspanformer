@@ -66,6 +66,7 @@ class ASpanFormer(nn.Module):
         # 2. coarse-level loftr module
         # add featmap with positional encoding, then flatten it to sequence [N, HW, C]
         [feat_c0, pos_encoding0], [feat_c1, pos_encoding1] = self.pos_encoding(feat_c0,data['pos_scale0']), self.pos_encoding(feat_c1,data['pos_scale1'])
+
         feat_c0 = rearrange(feat_c0, 'n c h w -> n c h w ')
         feat_c1 = rearrange(feat_c1, 'n c h w -> n c h w ')
 
